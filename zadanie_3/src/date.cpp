@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include "date.h"
-using namespace std;
 
 Date::Date(){
     day = 1;
@@ -45,7 +44,7 @@ bool Date::checkDate(int day, Months month, int year) {
         else if (day > 28)
             return false;
     }
-    if (month == April || month == June || month == September || month == November){
+    if (month == April || month == June || month == September || month == November) {
         if(day > 30)
             return false;
     }
@@ -80,11 +79,11 @@ int Date::getYear() {
 }
 
 void Date::printDate() {
-    cout << day << "." << month << "." << year << endl;
+    std::cout << day << "." << month << "." << year << std::endl;
 }
 
 void Date::printWrongDate(int day, Months month, int year){
-    cout << "Wrong date- " << day << "." << month << "." << year<< endl;
+    std::cout << "Wrong date- " << day << "." << month << "." << year<< std::endl;
 }
 
 void Date::setDate(int newDay, Months newMonth, int newYear) {
@@ -105,7 +104,7 @@ bool Date::operator!=(const Date& second_argument) const
     return !(*this == second_argument);
 }
 
-ostream& operator<<(ostream& os, Date const & date) {
+std::ostream& operator<<(std::ostream& os, Date const & date) {
     os<<date.day << "." << date.month << "." << date.year;
     return os;
 }

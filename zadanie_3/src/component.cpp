@@ -4,7 +4,8 @@
 
 #include "component.h"
 #include <iostream>
-string Component::getName() const{
+
+std::string Component::getName() const{
     return name;
 }
 
@@ -12,7 +13,7 @@ int Component::getPercentage() const{
     return percentage;
 }
 
-void Component::setName(string newName) {
+void Component::setName(std::string newName) {
     name = newName;
 }
 
@@ -20,9 +21,9 @@ void Component::setPercentage(int newPercentage) {
     percentage = newPercentage;
 }
 
-Component::Component(string Name, int Percentage) {
-    name = Name;
-    percentage = Percentage;
+Component::Component(std::string newName, int newPercentage) {
+    name = newName;
+    percentage = newPercentage;
 }
 
 Component::Component() {
@@ -40,7 +41,7 @@ bool Component::operator<(const Component& secondArgument) const
     return !(*this > secondArgument);
 }
 
-ostream& operator<<(ostream& os, Component const & component) {
+std::ostream& operator<<(std::ostream& os, Component const & component) {
     os<<component.getName() << "," << component.getPercentage();
     return os;
 }

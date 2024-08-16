@@ -8,14 +8,14 @@
 #include <string>
 #include <fstream>
 #include "product.h"
-using namespace std;
+
 class File {
 private:
-    string fileName;
+    std::string filePath;
 public:
-    File(string FileName);
-    vector<Product> readFile();
-    bool checkIfExists(string FileName);
+    File(const std::string& filePath);
+    std::vector<Product> readFile();
+    static bool checkIfExists(std::string filePath);
 };
 
 

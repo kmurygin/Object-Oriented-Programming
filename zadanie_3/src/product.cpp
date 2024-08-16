@@ -7,7 +7,6 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
-using namespace std;
 
 struct sortName {
     bool operator() (const Component& component1, const Component& component2) {
@@ -23,7 +22,7 @@ int Product::getNumberLot() {
     return numberLot;
 }
 
-string Product::getName() {
+std::string Product::getName() {
     return name;
 }
 
@@ -35,7 +34,7 @@ Date Product::getExpirationDate() {
     return expirationDate;
 }
 
-vector<Component> Product::getComponents() {
+std::vector<Component> Product::getComponents() {
     return components;
 }
 
@@ -47,7 +46,7 @@ void Product::setNumberLot(int newNumberLot) {
     numberLot = newNumberLot;
 }
 
-void Product::setName(string newName) {
+void Product::setName(std::string newName) {
     name = newName;
 }
 
@@ -59,17 +58,17 @@ void Product::setExpirationDate(Date newExpirationDate) {
     expirationDate = newExpirationDate;
 }
 
-Component Product::getComponent(string name) {
+Component Product::getComponent(std::string name) {
     if(checkIfContains(name)){
         for(int i=0; i < components.size(); i++){
             if (components.at(i).getName() == name)
                 return components.at(i);
         }
     }
-    cerr << "No such component";
+    std::cerr << "No such component";
 }
 
-bool Product::checkIfContains(string checkedComponent) {
+bool Product::checkIfContains(std::string checkedComponent) {
     for(int i=0; i < components.size(); i++){
         if (components.at(i).getName() == checkedComponent)
             return true;
@@ -83,7 +82,7 @@ void Product::addComponent(Component& newComponent) {
     }
 }
 
-int Product::getIndexOfComponent(string name){
+int Product::getIndexOfComponent(std::string name){
     if (checkIfContains(name)) {
         for (int i = 0; i < components.size(); i++)
         {
@@ -92,7 +91,7 @@ int Product::getIndexOfComponent(string name){
         }
     }
     else{
-        cerr << "No such component";
+        std::cerr << "No such component";
     }
 }
 
@@ -103,7 +102,7 @@ void Product::modifyComponent(Component& oldComponent, Component& newComponent) 
     }
 }
 
-void Product::removeComponent(string name) {
+void Product::removeComponent(std::string name) {
     if (checkIfContains(name)){
         auto it = find_if(components.begin(), components.end(), [&name](const Component& obj) {return obj.getName() == name;});
         auto index = distance(components.begin(), it);
@@ -162,14 +161,14 @@ bool Product::operator<(const Product& second_argument) const
     return !(*this > second_argument);
 }
 
-Product::Product(int Volume, int NumberLot, string Name, vector<Component> Components) {
+Product::Product(int Volume, int NumberLot, std::string Name, std::vector<Component> Components) {
     volume = Volume;
     numberLot = NumberLot;
     name = Name;
     components = Components;
 }
 
-Product::Product(int Volume, int NumberLot, string Name, vector<Component> Components, Date ExpirationDate, Producer Producer) {
+Product::Product(int Volume, int NumberLot, std::string Name, std::vector<Component> Components, Date ExpirationDate, Producer Producer) {
     volume = Volume;
     numberLot = NumberLot;
     name = Name;
@@ -186,12 +185,12 @@ void Product::sortComponentsPercentage(){
     sort(components.begin(), components.end());
 }
 
-ostream& operator<<(ostream& os, const Product& product) {
+std::ostream& operator<<(std::ostream& os, const Product& product) {
     os <<"Product:" << product.name << "  volume:" << product.volume<<" nr_of_lot:"<<product.numberLot;
     os << " components:{";
 
    copy(begin(product.components), end(product.components) - 1,
-       ostream_iterator<Component>(os, "; "));
+       std::ostream_iterator<Component>(os, "; "));
 
     // now output the last element (without a trailing "; ")
     if (product.components.size() > 0) {
@@ -225,18 +224,18 @@ Product::Product() {
     components = {};
 }
 
-Product::Product(int Volume, int NumberLot, string Name) {
+Product::Product(int Volume, int NumberLot, std::string Name) {
     volume = Volume;
     numberLot = NumberLot;
     name = Name;
 }
 
-istream& operator>>(istream& in, Product& product)
+std::istream& operator>>(std::istream& in, Product& product)
 {
-    string com1_name, com2_name;
+    std::string com1_name, com2_name;
     int com1_percentage, com2_percentage;
     int day, month, year;
-    string name, city, postCode, street;
+    std::string name, city, postCode, street;
     int number;
     //Producer(string Name, string City, string Street, string PostCode, int Number);
     //Product::Product(int Volume, int NumberLot, string Name, vector<Component> Components, Date ExpirationDate, Producer Producer) {

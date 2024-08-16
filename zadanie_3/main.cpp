@@ -4,18 +4,16 @@
 #include <iostream>
 #include "product.h"
 #include "date.h"
-#include "producer.h"
 #include "component.h"
 #include "file.h"
-#include <fstream>
 #include <sstream>
-using namespace std;
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        cerr << "Incorrect number of command line arguments"<<endl;
+        std::cerr << "Incorrect number of command line arguments"<< std::endl;
     }
-    string fileName;
-    stringstream stream;
+    std::string fileName;
+    std::stringstream stream;
 
     stream << argv[1];
     stream >> fileName;
@@ -24,10 +22,10 @@ int main(int argc, char* argv[]) {
     //Product(int Volume, int NumberLot, string Name, vector<Component> Components, Date ExpirationDate, Producer Producer);
     //Product(int Volume, int NumberLot, string Name, vector<Component> Components);
     File File1(fileName);
-    vector <Product> products = File1.readFile();
-    for (int i=0; i<products.size(); i++){
-        cout << products.at(i);
-        cout << "\n";
+    std::vector <Product> products = File1.readFile();
+    for (const auto & product : products){
+        std::cout << product;
+        std::cout << "\n";
     }
 //    Date date1(1,January,2022);
 //    Producer producer1("Bakoma", "Warszawa", "Marszałkowska", "02-342", 12);

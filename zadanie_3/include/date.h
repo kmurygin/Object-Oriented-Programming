@@ -4,7 +4,7 @@
 #include <iostream>
 #ifndef DATE_H
 #define DATE_H
-using namespace std;
+
 enum Months {
     January=1, February, March, April, May, June,
     July, August, September, October, November, December
@@ -38,7 +38,7 @@ public:
     bool operator==(const Date& second_argument) const;
     bool operator!=(const Date& second_argument) const;
 
-    friend ostream& operator<<(ostream& os, const Date& component);
+    friend std::ostream& operator<<(std::ostream& os, const Date& component);
 };
-ostream& operator<<(ostream& os, const Date& component);
+std::ostream& operator<<(std::ostream& os, const Date& component);
 #endif //DATE_H

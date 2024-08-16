@@ -6,37 +6,36 @@
 #define ZADANIE3_PRODUCER_H
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Producer {
 private:
-    string name;
-    string city;
-    string postCode;
-    string street;
+    std::string name;
+    std::string city;
+    std::string postCode;
+    std::string street;
     int number;
 public:
     Producer();
-    Producer(string Name, string City, string Street, string PostCode, int Number);
-    string getName();
-    string getCity();
-    string getPostCode();
-    string getStreet();
+    Producer(std::string Name, std::string City, std::string Street, std::string PostCode, int Number);
+    std::string getName();
+    std::string getCity();
+    std::string getPostCode();
+    std::string getStreet();
     int getNumber();
 //    string getFullAddress();
 
-    void setName(string newName);
-    void setCity(string newCity);
-    void setPostCode(string newPostCode);
-    void setStreet(string newStreet);
+    void setName(std::string newName);
+    void setCity(std::string newCity);
+    void setPostCode(std::string newPostCode);
+    void setStreet(std::string newStreet);
     void setNumber(int newNumber);
 
-    void setAddress(string newCity, string newPostCode, string newStreet, int newNumber);
+    void setAddress(std::string newCity, std::string newPostCode, std::string newStreet, int newNumber);
 
     bool operator==(const Producer& second_argument) const;
     bool operator!=(const Producer& second_argument) const;
 
-    friend std::ostream& operator<<(ostream& os, const Producer& producer);
+    friend std::ostream& operator<<(std::ostream& os, const Producer& producer);
 };
-ostream& operator<<(std::ostream& os, const Producer& producer);
+std::ostream& operator<<(std::ostream& os, const Producer& producer);
 #endif //ZADANIE3_PRODUCER_H

@@ -11,40 +11,39 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
 class Product{
 private:
     int volume;
     int numberLot;
-    string name;
+    std::string name;
     Producer producer;
     Date expirationDate;
-    vector<Component> components;
+    std::vector<Component> components;
 
 public:
     Product();
-    Product(int Volume, int NumberLot, string Name);
-    Product(int Volume, int NumberLot, string Name, vector<Component> Components);
-    Product(int Volume, int NumberLot, string Name, vector<Component> Components, Date ExpirationDate, Producer Producer);
+    Product(int Volume, int NumberLot, std::string Name);
+    Product(int Volume, int NumberLot, std::string Name, std::vector<Component> Components);
+    Product(int Volume, int NumberLot, std::string Name, std::vector<Component> Components, Date ExpirationDate, Producer Producer);
     int getVolume();
     int getNumberLot();
-    string getName();
+    std::string getName();
     Producer getProducer();
     Date getExpirationDate();
 
     void setVolume(int newVolume);
     void setNumberLot(int newNumberLot);
-    void setName(string newName);
+    void setName(std::string newName);
     void setProducer(Producer newProducer);
     void setExpirationDate(Date newExpirationDate);
 
-    vector<Component> getComponents();
-    Component getComponent(string name);
-    bool checkIfContains(string checkedComponent);
-    int getIndexOfComponent(string name);
+    std::vector<Component> getComponents();
+    Component getComponent(std::string name);
+    bool checkIfContains(std::string checkedComponent);
+    int getIndexOfComponent(std::string name);
     void addComponent(Component& newComponent);
     void modifyComponent(Component& oldComponent, Component& newComponent);
-    void removeComponent(string name);
+    void removeComponent(std::string name);
     int numberOfComponents();
 
     int numberOfComponentsGreater(int percentage);
@@ -67,10 +66,10 @@ public:
     bool operator==(const Product& second_argument) const;
     bool operator!=(const Product& second_argument) const;
 
-    friend std::ostream& operator<<(ostream& os, const Product& product);
-    friend std::istream& operator>>(istream& in, Product& product);
+    friend std::ostream& operator<<(std::ostream& os, const Product& product);
+    friend std::istream& operator>>(std::istream& in, Product& product);
 };
 
-ostream& operator<<(std::ostream& os, const Product& product);
-istream& operator>>(std::istream& in, Product& product);
+std::ostream& operator<<(std::ostream& os, const Product& product);
+std::istream& operator>>(std::istream& in, Product& product);
 #endif //ZADANIE3_PRODUCT_H

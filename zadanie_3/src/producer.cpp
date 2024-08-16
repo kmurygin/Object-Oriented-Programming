@@ -3,21 +3,20 @@
 //
 
 #include "producer.h"
-using namespace std;
 
-string Producer::getName() {
+std::string Producer::getName() {
     return name;
 }
 
-string Producer::getCity() {
+std::string Producer::getCity() {
     return city;
 }
 
-string Producer::getPostCode() {
+std::string Producer::getPostCode() {
     return postCode;
 }
 
-string Producer::getStreet() {
+std::string Producer::getStreet() {
     return street;
 }
 
@@ -25,19 +24,19 @@ int Producer::getNumber() {
     return number;
 }
 
-void Producer::setName(string newName) {
+void Producer::setName(std::string newName) {
     name = newName;
 }
 
-void Producer::setCity(string newCity) {
+void Producer::setCity(std::string newCity) {
     city = newCity;
 }
 
-void Producer::setPostCode(string newPostCode) {
+void Producer::setPostCode(std::string newPostCode) {
     postCode = newPostCode;
 }
 
-void Producer::setStreet(string newStreet) {
+void Producer::setStreet(std::string newStreet) {
     street = newStreet;
 }
 
@@ -45,12 +44,12 @@ void Producer::setNumber(int newNumber) {
     number = newNumber;
 }
 
-Producer::Producer(string Name, string City, string Street, string PostCode, int Number) {
-    name = Name;
-    city = City;
-    street = Street;
-    postCode = PostCode;
-    number = Number;
+Producer::Producer(std::string name, std::string city, std::string street, std::string postCode, int number) {
+    this->name = name;
+    this->city = city;
+    this->street = street;
+    this->postCode = postCode;
+    this->number = number;
 }
 
 Producer::Producer() {
@@ -61,7 +60,7 @@ Producer::Producer() {
     number = 0;
 }
 
-void Producer::setAddress(string newCity, string newStreet, string newPostCode, int newNumber) {
+void Producer::setAddress(std::string newCity, std::string newStreet, std::string newPostCode, int newNumber) {
     city = newCity;
     street = newStreet;
     postCode = newPostCode;
@@ -79,7 +78,7 @@ bool Producer::operator!=(const Producer& second_argument) const
     return !(*this == second_argument);
 }
 
-ostream& operator<<(ostream& os, const Producer& producer) {
+std::ostream& operator<<(std::ostream& os, const Producer& producer) {
     os <<"name: "<<producer.name <<" city:"<<producer.city<<" postcode:"<<producer.postCode<<" street:"<<producer.street
     <<" number:"<<producer.number;
     return os;
